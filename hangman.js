@@ -12,8 +12,22 @@ var wrongGuess = [];
 var scoreElement = document.getElementById("score");
 var wordContent = document.getElementById("guessedWord");
 var checkGuess = document.getElementById("inputId");
+var scoreMinus = 0;
 
 document.getElementById("firstg").addEventListener("click", function () {
+  allGuess = [];
+  correctGuess = [];
+  wrongGuess = [];
+  wordContent.innerHTML = "";
+  staged = 0;
+  score = 0;
+  scoreMinus = 0;
+  word = choseWord();
+  underSGuessed = "-".repeat(word.word.length);
+  wordContent.innerHTML = underSGuessed;
+  console.log(word.word);
+  document.getElementById("hint").classList.add("d-none");
+  document.getElementById("hint1").innerHTML = ""
   word = choseWord();
   console.log(word.word);
 
@@ -29,7 +43,8 @@ document.getElementById("btnId").addEventListener("click", function () {
   document.getElementById("hint").addEventListener("click", function () {
     document.getElementById("hint1").innerHTML = word.hint;
     wrongGuess.push(1);
-    score = (correctGuess.length - wrongGuess.length) * 10;
+    score += -10;
+    score = (correctGuess.length * 10) + scoreMinus;
     scoreElement.innerHTML = `score <i class="fa-solid fa-star text-warning"></i>:${score}`;
   });
   guess = wordContent.innerHTML;
@@ -38,7 +53,7 @@ document.getElementById("btnId").addEventListener("click", function () {
 
     if (word.word.includes(checkGuess.value)) {
       correctGuess = [];
-      
+
       for (let i = 0; i < word.word.length; i++) {
         if (word.word.charAt(i) === checkGuess.value) {
           underSGuessed =
@@ -66,8 +81,10 @@ document.getElementById("btnId").addEventListener("click", function () {
           document.getElementById("msg").innerText = "Good Job";
         }
       }
+      
     } else {
       staged++;
+      scoreMinus += -10;
       wrongGuess.push(checkGuess.value);
 
       drawHangman(staged);
@@ -89,14 +106,18 @@ document.getElementById("btnId").addEventListener("click", function () {
     }
   } else {
     checkGuess.value = "";
+    
+
     if (document.getElementById("msg").classList.contains("d-none")) {
       document.getElementById("msg").classList.toggle("d-none");
       document.getElementById("msg").innerText = "You Entered This Value";
     } else {
       document.getElementById("msg").innerText = "You Entered This Value";
     }
+    score = (correctGuess.length * 10) + scoreMinus;
+    scoreElement.innerHTML = `score <i class="fa-solid fa-star text-warning"></i>:${score}`;
   }
-  score = 10+(correctGuess.length - wrongGuess.length) * 10;
+  score = (correctGuess.length * 10) + scoreMinus;
   scoreElement.innerHTML = `score <i class="fa-solid fa-star text-warning"></i>:${score}`;
 });
 
@@ -107,11 +128,14 @@ document.getElementById("newgame").addEventListener("click", function () {
   wordContent.innerHTML = "";
   staged = 0;
   score = 0;
+  scoreMinus = 0;
   word = choseWord();
   underSGuessed = "-".repeat(word.word.length);
   wordContent.innerHTML = underSGuessed;
   console.log(word.word);
   document.getElementById("hint").classList.add("d-none");
-  document.getElementById("hint1").innerHTML=""
-  start(score, scoreElement);
+  document.getElementById("hint1").innerHTML = ""
+  // start(score, scoreElement);
+  document.getElementById("firstShow").classList.toggle("d-none");
+  document.getElementById("game").classList.toggle("d-none");
 });
