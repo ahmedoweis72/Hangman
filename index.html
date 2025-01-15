@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div id="firstShow" class="mx-auto  d-flex justify-content-around align-items-center flex-column startg">
+        
+      <div>
+          <select name="category" id="category" class="custom-select mx-2">
+              <option value="animals"selected>Chose Category</option>
+              <option value="animals">Animals</option>
+              <option value="fruits">Fruits</option>
+              <option value="celebrities">Celebrities</option>
+              <option value="countries">Countries</option>
+              <option value="sport">Sport</option>
+            </select>
+            <select name="level" id="level" class="custom-select mx-2">
+              <option value="easy"selected>Chose Level</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            
+            </select>
+      </div>
+      <button type="button" id="firstg" class="btn btn-success">Start Game</button>
+      </div>
+    <div
+      id="game"
+      class="container  mx-auto bg-primary-subtle border-0 rounded-5 mt-5 d-flex justify-content-around align-items-center shadow "
+    >
+      <div class="d-flex flex-column justify-content-around text-center p-5">
+        <div class="text-center mb-5">
+          <p id="hint" class="d-none">Hint:<span id="hint1"></span></p>
+          <h2 id="score"></h2>
+        </div>
+        <div>
+          <h2 class="text-center">word</h2>
+          <h4 class="text-center" id="guessedWord"></h4>
+          <p id="msg" class="fs-2"></p>
+          <div class="input-group">
+            <button
+              type="button"
+              id="btnId"
+              class="input-group-text btn btn-dark"
+            >
+              guees
+            </button>
+            <input
+              type="text"
+              maxlength="1"
+              autocomplete="off"
+              minlength="1"
+              id="inputId"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+      <canvas id="hangmanCanvas" width="500" height="500"></canvas>
+    </div>
+
+    <div
+      id="tryagain"
+      class="container mx-auto  bg-primary-subtle border-0 rounded-5 p-5 mt-5 d-flex justify-content-around flex-column  align-items-center shadow"
+    >
+      <h1 id="gamSt"></h1>
+      <button type="button" id="newgame" class="btn btn-success my-5">new game</button>
+    </div>
+
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/all.min.js"></script>
+    <script src="hangman.js" type="module"></script>
+  </body>
+</html>

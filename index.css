@@ -1,0 +1,18 @@
+canvas {
+    border: 3px solid #555;
+    background: linear-gradient(to bottom, #e6e6e6, #ffffff);
+    display: block;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.startg{
+    background-image: url(ss_94f0ff6ae421b28f6527ed7b94873a10d9644a1a.600x338.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+#hint{
+    cursor: pointer;
+}
