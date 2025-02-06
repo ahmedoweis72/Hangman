@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div id="firstShow" class="mx-auto  d-flex justify-content-around align-items-center flex-column startg">
+    <div id="firstShow" class="mx-auto
+      d-flex justify-content-around
+     align-items-center flex-column startg">
         
       <div>
           <select name="category" id="category" class="custom-select mx-2">
@@ -25,17 +27,21 @@
               <option value="easy">Easy</option>
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
-            
             </select>
       </div>
       <button type="button" id="firstg" class="btn btn-success">Start Game</button>
       </div>
-    <div
-      id="game"
-      class="container  mx-auto bg-primary-subtle border-0 rounded-5 mt-5 d-flex justify-content-around align-items-center shadow "
+    </div>
+    <div id="game"
+      class="container d-none mx-auto
+       bg-primary-subtle border-0 rounded-5
+        mt-5  justify-content-around
+         align-items-center shadow "
     >
+    
       <div class="d-flex flex-column justify-content-around text-center p-5">
         <div class="text-center mb-5">
+          <h1 id="time"></h1>
           <p id="hint" class="d-none">Hint:<span id="hint1"></span></p>
           <h2 id="score"></h2>
         </div>
@@ -62,12 +68,12 @@
           </div>
         </div>
       </div>
+      
       <canvas id="hangmanCanvas" width="500" height="500"></canvas>
     </div>
 
-    <div
-      id="tryagain"
-      class="container mx-auto  bg-primary-subtle border-0 rounded-5 p-5 mt-5 d-flex justify-content-around flex-column  align-items-center shadow"
+    <div id="tryagain"
+      class="container mx-auto d-none text-center bg-primary-subtle border-0 rounded-5 p-5 mt-5 justify-content-around flex-column  align-items-center shadow"
     >
       <h1 id="gamSt"></h1>
       <button type="button" id="newgame" class="btn btn-success my-5">new game</button>
