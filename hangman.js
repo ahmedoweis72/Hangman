@@ -14,6 +14,7 @@ var wordContent = document.getElementById("guessedWord");
 var checkGuess = document.getElementById("inputId");
 let time=0;
 let timeSco=0;
+let hint=0;
 
 document.getElementById("firstg").addEventListener("click", function () {
   allGuess = [];
@@ -37,7 +38,7 @@ document.getElementById("firstg").addEventListener("click", function () {
   if (time===20) {
     time=0;
     timeSco+=1;
-    score = scoreColl(wrongGuess.length, correctGuess.length,timeSco);
+    score = scoreColl(wrongGuess.length, correctGuess.length,timeSco,hint);
     scoreElement.innerHTML = `score <i class="fa-solid fa-star text-warning"></i>:${score}`;
   }
     
@@ -88,10 +89,16 @@ document.getElementById("btnId").addEventListener("click", function () {
         document.getElementById("msg").innerText = "Guess Again";
       }
     }
-    score = scoreColl(wrongGuess.length, correctGuess.length,timeSco);
+    score = scoreColl(wrongGuess.length, correctGuess.length,timeSco,hint);
+   if (score>0) {
     document.getElementById("gamSt"
     ).innerHTML = `We have a wineer &#128526<br><br><p class="text-center">score
      <i class="fa-solid fa-star text-warning"></i>:${score}</p>`;
+   }else{
+    document.getElementById("gamSt"
+    ).innerHTML = `You Pass but not win Sorry<br><br><pclass="text-center">score
+     <i class="fa-solid fa-star text-warning"></i>:${score}</p>`;
+   }
     checkGuess.value = "";
     if (staged > 7) {
       document.getElementById("game").classList.replace("d-flex", "d-none");
@@ -132,16 +139,15 @@ document.getElementById("newgame").addEventListener("click", function () {
 
 });
 
-function scoreColl(wrong, corr,t) {
-  let score = corr + (wrong * -1)+ (t * -1);
+function scoreColl(wrong, corr,t,hintVar) {
+  let score = corr + (wrong * -1)+ (t * -1)+(hintVar * -1);
   return score * 10;
 }
 function showHint() {
   document.getElementById("hint").addEventListener("click", function () {
+    hint++;
     document.getElementById("hint1").innerHTML = word.hint;
-    wrongGuess.push(1);
-    score += -10;
-
+    score = scoreColl(wrongGuess.length, correctGuess.length,timeSco,hint);
     scoreElement.innerHTML = `score <i class="fa-solid fa-star text-warning"></i>:${score}`;
   });
 }
